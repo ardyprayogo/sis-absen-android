@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_margin_sm">2dp</dimen>
+    <dimen name="padding_margin_md">4dp</dimen>
+    <dimen name="padding_margin_lg">8dp</dimen>
+    <dimen name="padding_margin_xlg">16dp</dimen>
+    <dimen name="padding_margin_xxlg">32dp</dimen>
+
+    <dimen name="height_width_sm">50dp</dimen>
+    <dimen name="height_width_md">150dp</dimen>
+    <dimen name="height_width_lg">250dp</dimen>
+
+    <dimen name="corner_radius">10dp</dimen>
+    <dimen name="corner_radius_xl">20dp</dimen>
+
+    <dimen name="text_sm">14dp</dimen>
+    <dimen name="text_md">16dp</dimen>
+    <dimen name="text_lg">20dp</dimen>
+</resources>
