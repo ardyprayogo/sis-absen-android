@@ -65,14 +65,15 @@ public class VolleyUtil {
                         if (networkResponse != null && networkResponse.data != null) {
                             String data = new String(networkResponse.data);
                             try {
-                                listener.onError(new JSONObject(data));
+                                String message = new JSONObject(data).getString("message");
+                                listener.onError(message);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             Log.e("API", Route.BASE_URL + url + " => " + data);
                         } else {
                             try {
-                                listener.onError(new JSONObject().put("message", error.toString()));
+                                listener.onError(error.toString());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -126,14 +127,15 @@ public class VolleyUtil {
                         if (networkResponse != null && networkResponse.data != null) {
                             String data = new String(networkResponse.data);
                             try {
-                                listener.onError(new JSONObject(data));
+                                String message = new JSONObject(data).getString("message");
+                                listener.onError(message);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             Log.e("API", finalUrl);
                         } else {
                             try {
-                                listener.onError(new JSONObject().put("message", error.toString()));
+                                listener.onError(error.toString());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

@@ -1,12 +1,12 @@
 package com.app.absensis;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.absensis.utils.LoadingUtil;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -28,5 +28,12 @@ public class BaseActivity extends AppCompatActivity {
 
     public void dismissLoading() {
         loadingUtil.dismissLoading();
+    }
+
+    public void showSimpleDialog(String title, String message) {
+        MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
+        dialogBuilder.setTitle(title)
+                .setMessage(message)
+                .show();
     }
 }

@@ -55,8 +55,13 @@ public class LoginActivity extends BaseActivity {
         PreferenceUtil.setEmail(LoginActivity.this, email);
         VolleyUtil.sendLogin(LoginActivity.this, email, password, new VolleyResponseListener() {
             @Override
-            public void onError(JSONObject error) {
-                dismissLoading();
+            public void onError(String error) {
+                try {
+                    dismissLoading();
+                    showSimpleDialog("Failed", error);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
