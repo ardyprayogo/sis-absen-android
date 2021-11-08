@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.app.absensis.R;
@@ -13,14 +12,19 @@ public class LoadingUtil {
 
     private static LoadingUtil loadingUtil;
     private Dialog dialog;
+    private Context context;
 
-    public static LoadingUtil getInstance() {
+    public LoadingUtil(Context context) {
+        this.context = context;
+    }
+
+    public static synchronized LoadingUtil getInstance(Context context) {
         if (loadingUtil == null)
-            loadingUtil = new LoadingUtil();
+            loadingUtil = new LoadingUtil(context);
         return loadingUtil;
     }
 
-    public void showLoading(Context context, String message, boolean cancelable) {
+    public void showLoading(String message, boolean cancelable) {
         if (dialog == null || !dialog.isShowing()) {
             dialog = new Dialog(context);
             dialog.setContentView(R.layout.view_loading);

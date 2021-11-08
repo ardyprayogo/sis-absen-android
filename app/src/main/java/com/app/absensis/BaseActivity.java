@@ -1,6 +1,7 @@
 package com.app.absensis;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +19,11 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        loadingUtil = LoadingUtil.getInstance();
+        loadingUtil = LoadingUtil.getInstance(this);
     }
 
     public void showLoading(String message) {
-        loadingUtil.showLoading(this, message, false);
+        loadingUtil.showLoading(message, false);
     }
 
     public void dismissLoading() {

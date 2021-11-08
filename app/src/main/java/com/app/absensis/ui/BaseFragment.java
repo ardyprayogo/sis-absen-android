@@ -18,11 +18,11 @@ public class BaseFragment extends Fragment {
     }
 
     private void initUI() {
-        loadingUtil = LoadingUtil.getInstance();
+        loadingUtil = LoadingUtil.getInstance(getContext());
     }
 
     public void showLoading(String message) {
-        loadingUtil.showLoading(getContext(), message, false);
+        loadingUtil.showLoading(message, false);
     }
 
     public void dismissLoading() {
