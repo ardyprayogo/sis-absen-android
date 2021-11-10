@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Home"
-        android:gravity="center"/>
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_header"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_bg_top" />
+
+        <RelativeLayout
+            android:elevation="8dp"
+            android:id="@+id/rl_card"
+            android:layout_marginTop="@dimen/padding_margin_xxlg"
+            android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
+            android:background="@drawable/home_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_below="@+id/rl_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
+            android:text="Main Menu"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_md"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/padding_margin_xlg"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_header"
+            android:layout_marginTop="@dimen/padding_margin_xlg"
+            android:paddingHorizontal="@dimen/padding_margin_xlg" />
+    </RelativeLayout>
+
+</ScrollView>

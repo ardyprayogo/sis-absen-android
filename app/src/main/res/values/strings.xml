@@ -5,4 +5,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="info">Info</string>
+    <string name="beranda">Beranda</string>
+    <string name="profil">Profil</string>
 </resources>

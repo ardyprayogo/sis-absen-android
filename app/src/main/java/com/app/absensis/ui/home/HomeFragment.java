@@ -7,11 +7,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.absensis.R;
+import com.app.absensis.constant.MenuConst;
 import com.app.absensis.ui.BaseFragment;
+import com.app.absensis.ui.menu.MenuAdapter;
+import com.app.absensis.ui.menu.MenuModel;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends BaseFragment {
+
+    private RecyclerView rvMainMenu;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,6 +31,22 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initUI(view);
+    }
+
+    private void initUI(View view) {
+        rvMainMenu = view.findViewById(R.id.rv_main_menu);
+        rvMainMenu.setHasFixedSize(true);
+        rvMainMenu.setLayoutManager(new GridLayoutManager(getContext(), 4));
+
+        ArrayList<MenuModel> menuModels = MenuConst.getHomeMenu();
+        MenuAdapter adapter = new MenuAdapter(getContext(), menuModels, new MenuAdapter.ManuAdapterListener() {
+            @Override
+            public void OnClick(MenuModel menu) {
+
+            }
+        });
+        rvMainMenu.setAdapter(adapter);
     }
 
 }

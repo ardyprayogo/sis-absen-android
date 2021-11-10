@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void sendLogin(String email, String password) {
-        showLoading("Loading ..");
+        showLoading(getString(R.string.loading), false);
         PreferenceUtil.setEmail(LoginActivity.this, email);
         VolleyUtil.sendLogin(LoginActivity.this, email, password, new VolleyResponseListener() {
             @Override

@@ -1,8 +1,12 @@
 package com.app.absensis;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.absensis.utils.LoadingUtil;
@@ -10,24 +14,31 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class BaseActivity extends AppCompatActivity {
 
-    private LoadingUtil loadingUtil;
+    private MaterialAlertDialogBuilder dialogBuilder;
+    private AlertDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUI();
     }
 
-    private void initUI() {
-        loadingUtil = LoadingUtil.getInstance(this);
-    }
-
-    public void showLoading(String message) {
-        loadingUtil.showLoading(message, false);
+    public void showLoading(String message, boolean cancelable) {
+        if (progressDialog == null || !progressDialog.isShowing()) {
+            View view = LayoutInflater.from(this).inflate(R.layout.view_loading, null, false);
+            TextView tvLoading = view.findViewById(R.id.tv_loading);
+            tvLoading.setText(message);
+            dialogBuilder = new MaterialAlertDialogBuilder(this);
+            dialogBuilder.setView(view).setCancelable(cancelable);
+            progressDialog = dialogBuilder.create();
+            progressDialog.show();
+        }
     }
 
     public void dismissLoading() {
-        loadingUtil.dismissLoading();
+        if (progressDialog != null || progressDialog.isShowing()) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
     public void showSimpleDialog(String title, String message) {
