@@ -31,6 +31,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initUI() {
+        hideActionBar();
         edtEmail = findViewById(R.id.edt_email);
         edtPassword = findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);

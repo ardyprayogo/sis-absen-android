@@ -1,5 +1,6 @@
 package com.app.absensis.ui.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.app.absensis.R;
 import com.app.absensis.model.profile.Profile;
+import com.app.absensis.network.ViewModelErrorListener;
 import com.app.absensis.network.VolleyResponseListener;
 import com.app.absensis.network.VolleyUtil;
 import com.app.absensis.ui.BaseFragment;
+import com.app.absensis.ui.LoginActivity;
+import com.app.absensis.utils.PreferenceUtil;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONObject;
@@ -55,14 +59,33 @@ public class ProfileFragment extends BaseFragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                VolleyUtil.sendLogout(getContext(), new VolleyResponseListener() {
+                    @Override
+                    public void onError(String error) {
+                        showSimpleDialog("Error", error);
+                    }
 
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        PreferenceUtil.clearData(getContext());
+                        startActivity(new Intent(getContext(), LoginActivity.class));
+                        getActivity().finish();
+                    }
+                });
             }
         });
     }
 
     private void getProfile() {
-        ProfileViewModel viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        viewModel.getProfile(getContext()).observe(getViewLifecycleOwner(), new Observer<Profile>() {
+        ProfileViewModel profileViewModel = new ProfileViewModel();
+        ProfileViewModel viewModel = ViewModelProviders.of(this).get(profileViewModel.getClass());
+        viewModel.getProfile(getContext(), new ViewModelErrorListener() {
+            @Override
+            public void OnErrorListener(String message) {
+                dismissLoading();
+                showSimpleDialog("Error", message);
+            }
+        }).observe(getViewLifecycleOwner(), new Observer<Profile>() {
             @Override
             public void onChanged(Profile profile) {
                 tvName.setText(profile.getEmployeeName());

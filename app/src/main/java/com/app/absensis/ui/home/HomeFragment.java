@@ -1,5 +1,6 @@
 package com.app.absensis.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.absensis.R;
 import com.app.absensis.constant.MenuConst;
 import com.app.absensis.ui.BaseFragment;
+import com.app.absensis.ui.attendance.AttendanceActivity;
 import com.app.absensis.ui.menu.MenuAdapter;
 import com.app.absensis.ui.menu.MenuModel;
 
@@ -43,7 +45,17 @@ public class HomeFragment extends BaseFragment {
         MenuAdapter adapter = new MenuAdapter(getContext(), menuModels, new MenuAdapter.ManuAdapterListener() {
             @Override
             public void OnClick(MenuModel menu) {
-
+                Intent i = null;
+                switch (menu.getName()) {
+                    case MenuConst.CHECK_IN:
+                        i = new Intent(getActivity(), AttendanceActivity.class);
+                        break;
+                    case MenuConst.CHECK_OUT:
+                        i = new Intent(getActivity(), AttendanceActivity.class);
+                        break;
+                }
+                if (i != null)
+                    startActivity(i);
             }
         });
         rvMainMenu.setAdapter(adapter);

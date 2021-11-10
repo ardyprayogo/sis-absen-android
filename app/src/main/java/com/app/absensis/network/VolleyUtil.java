@@ -50,6 +50,10 @@ public class VolleyUtil {
         sendPostRequest(context, Route.URL_PROFILE, null, listener);
     }
 
+    public static void sendLogout(Context context, VolleyResponseListener listener) {
+        sendPostRequest(context, Route.URL_LOGOUT, null, listener);
+    }
+
     private static void sendPostRequest(Context context,
                                         String url,
                                         JSONObject json,

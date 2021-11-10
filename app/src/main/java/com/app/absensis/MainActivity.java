@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initUI() {
+        hideActionBar();
         bnvMain = findViewById(R.id.bnv_main);
         flMain = findViewById(R.id.fl_main);
         getFragmentPage(new HomeFragment());

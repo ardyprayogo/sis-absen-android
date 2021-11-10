@@ -20,6 +20,9 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     public void showLoading(String message, boolean cancelable) {
@@ -46,5 +49,21 @@ public class BaseActivity extends AppCompatActivity {
         dialogBuilder.setTitle(title)
                 .setMessage(message)
                 .show();
+    }
+
+    public void hideActionBar() {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+    }
+
+    public void showActionBar() {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

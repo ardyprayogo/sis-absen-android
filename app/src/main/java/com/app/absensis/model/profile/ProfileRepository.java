@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.app.absensis.network.ViewModelErrorListener;
 import com.app.absensis.network.VolleyResponseListener;
 import com.app.absensis.network.VolleyUtil;
 
@@ -13,11 +14,18 @@ import org.json.JSONObject;
 
 public class ProfileRepository {
 
+    private ViewModelErrorListener listener;
+
+    public ProfileRepository(ViewModelErrorListener listener) {
+        this.listener = listener;
+    }
+
     public MutableLiveData<Profile> requestProfile(Context context) {
         final MutableLiveData<Profile> data = new MutableLiveData<>();
         VolleyUtil.getProfile(context, new VolleyResponseListener() {
             @Override
             public void onError(String error) {
+                listener.OnErrorListener(error);
             }
 
             @Override
