@@ -11,23 +11,17 @@
     <path
         android:fillColor="#2F80ED"
         android:fillAlpha="0.2"
-        android:pathData="M22 10v24c0 0.55 0.45 1 1 1h8c0.55 0 1-0.45 1-1V10c0-0.55-0.45-1-1-1h-8c-0.55 0-1 0.45-1 1z"/>
+        android:pathData="M12 34c0-0.8 0.32-1.56 0.88-2.12S14.2 31 15 31h17V10H15c-0.8 0-1.56 0.32-2.12 0.88S12 12.2 12 13v21z"/>
     <path
         android:strokeColor="#2F80ED"
         android:strokeWidth="2"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M22 16v-6c0-0.27 0.1-0.52 0.3-0.7C22.47 9.1 22.72 9 23 9h8c0.27 0 0.52 0.1 0.7 0.3C31.9 9.47 32 9.72 32 10v24c0 0.27-0.1 0.52-0.3 0.7c-0.18 0.2-0.43 0.3-0.7 0.3h-8c-0.27 0-0.52-0.1-0.7-0.3c-0.2-0.18-0.3-0.43-0.3-0.7v-6"/>
+        android:pathData="M12 34c0-0.8 0.32-1.56 0.88-2.12S14.2 31 15 31h17V10H15c-0.8 0-1.56 0.32-2.12 0.88S12 12.2 12 13v21z"/>
     <path
         android:strokeColor="#2F80ED"
         android:strokeWidth="2"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M9 22h13"/>
-    <path
-        android:strokeColor="#2F80ED"
-        android:strokeWidth="2"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M16 28l6-6l-6-6"/>
+        android:pathData="M12 34v1h18"/>
 </vector>

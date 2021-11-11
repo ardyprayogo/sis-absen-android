@@ -47,10 +47,7 @@ public class HomeFragment extends BaseFragment {
             public void OnClick(MenuModel menu) {
                 Intent i = null;
                 switch (menu.getName()) {
-                    case MenuConst.CHECK_IN:
-                        i = new Intent(getActivity(), AttendanceActivity.class);
-                        break;
-                    case MenuConst.CHECK_OUT:
+                    case MenuConst.ATTENDANCE:
                         i = new Intent(getActivity(), AttendanceActivity.class);
                         break;
                 }

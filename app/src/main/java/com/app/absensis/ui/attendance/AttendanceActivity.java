@@ -1,16 +1,20 @@
 package com.app.absensis.ui.attendance;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.app.absensis.BaseActivity;
 import com.app.absensis.R;
+import com.app.absensis.ui.attendance.cico.CicoActivity;
 import com.app.absensis.utils.LocationUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +26,7 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
 
     private GoogleMap mMap;
     private LocationUtil locationUtil;
+    private ImageView ivCi, ivCo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,8 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
     private void initUI() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        ivCi = findViewById(R.id.iv_check_in);
+        ivCo = findViewById(R.id.iv_check_out);
     }
 
     private void initLocation() {
@@ -76,6 +83,10 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
         super.onPause();
         locationUtil.removeLocation();
         mMap.clear();
+    }
+
+    public void gotoCico(View view) {
+        startActivity(new Intent(this, CicoActivity.class));
     }
 
 }

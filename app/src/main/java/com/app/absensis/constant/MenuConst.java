@@ -6,6 +6,7 @@ import com.app.absensis.ui.menu.MenuModel;
 import java.util.ArrayList;
 
 public class MenuConst {
+    public final static String ATTENDANCE = "Absen";
     public final static String CHECK_IN = "Check In";
     public final static String CHECK_OUT = "Check Out";
     public final static String HISTORY = "History Absensi";
@@ -15,8 +16,9 @@ public class MenuConst {
 
     public static ArrayList<MenuModel> getHomeMenu() {
         ArrayList<MenuModel> menuModels = new ArrayList<>();
-        menuModels.add(new MenuModel(CHECK_IN, R.drawable.ic_home_checkin));
-        menuModels.add(new MenuModel(CHECK_OUT, R.drawable.ic_home_checkout));
+//        menuModels.add(new MenuModel(CHECK_IN, R.drawable.ic_home_checkin));
+//        menuModels.add(new MenuModel(CHECK_OUT, R.drawable.ic_home_checkout));
+        menuModels.add(new MenuModel(ATTENDANCE, R.drawable.ic_home_attendance));
         menuModels.add(new MenuModel(HISTORY, R.drawable.ic_home_history));
         menuModels.add(new MenuModel(LEVEL, R.drawable.ic_home_level));
         menuModels.add(new MenuModel(DIVISION, R.drawable.ic_home_division));

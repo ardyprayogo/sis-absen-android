@@ -11,8 +11,8 @@
         android:orientation="vertical">
         <ImageView
             android:id="@+id/iv_menu"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/icon_lg"
+            android:layout_height="@dimen/icon_lg"
             android:src="@drawable/ic_home_default"/>
         <TextView
             android:id="@+id/tv_menu"
