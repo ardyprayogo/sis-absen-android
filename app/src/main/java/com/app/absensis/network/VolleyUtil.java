@@ -54,6 +54,41 @@ public class VolleyUtil {
         sendPostRequest(context, Route.URL_LOGOUT, null, listener);
     }
 
+    public static void getListDivision(Context context, VolleyResponseListener listener) {
+        sendGetRequest(context, Route.URL_DIVISION_LIST, null, listener);
+    }
+
+    public static void createDivsion(Context context, String divisionName, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("division_name", divisionName);
+            sendPostRequest(context, Route.URL_DIVISION_CREATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateDivsion(Context context, int id, String divisionName, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", id);
+            object.put("division_name", divisionName);
+            sendPostRequest(context, Route.URL_DIVISION_UPDATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteDivsion(Context context, int id, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", id);
+            sendPostRequest(context, Route.URL_DIVISION_DELETE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void sendPostRequest(Context context,
                                         String url,
                                         JSONObject json,

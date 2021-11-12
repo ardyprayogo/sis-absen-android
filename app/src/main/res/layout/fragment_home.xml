@@ -28,15 +28,15 @@
 
         <TextView
             android:id="@+id/tv_header"
-            android:layout_below="@+id/rl_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_card"
             android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
+            android:layout_marginTop="@dimen/padding_margin_xlg"
             android:text="Main Menu"
             android:textColor="@color/white"
             android:textSize="@dimen/text_md"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/padding_margin_xlg"/>
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main_menu"

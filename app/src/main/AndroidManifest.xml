@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Absensis"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".model.division.CreateDivisionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.division.DivisionActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.attendance.cico.CicoActivity"
             android:exported="true" />
         <activity

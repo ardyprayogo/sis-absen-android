@@ -7,4 +7,7 @@
     <string name="info">Info</string>
     <string name="beranda">Beranda</string>
     <string name="profil">Profil</string>
+    <string name="nama_divisi">Nama Divisi</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>

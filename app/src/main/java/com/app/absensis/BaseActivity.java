@@ -1,15 +1,13 @@
 package com.app.absensis;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.app.absensis.utils.LoadingUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class BaseActivity extends AppCompatActivity {
@@ -32,6 +30,18 @@ public class BaseActivity extends AppCompatActivity {
             tvLoading.setText(message);
             dialogBuilder = new MaterialAlertDialogBuilder(this);
             dialogBuilder.setView(view).setCancelable(cancelable);
+            progressDialog = dialogBuilder.create();
+            progressDialog.show();
+        }
+    }
+
+    public void showDefaultLoading() {
+        if (progressDialog == null || !progressDialog.isShowing()) {
+            View view = LayoutInflater.from(this).inflate(R.layout.view_loading, null, false);
+            TextView tvLoading = view.findViewById(R.id.tv_loading);
+            tvLoading.setText(getString(R.string.loading));
+            dialogBuilder = new MaterialAlertDialogBuilder(this);
+            dialogBuilder.setView(view).setCancelable(false);
             progressDialog = dialogBuilder.create();
             progressDialog.show();
         }
@@ -65,5 +75,13 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    protected void showDialogConfirm(String title, String message, DialogInterface.OnClickListener listener) {
+        MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
+        dialogBuilder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Ok", listener)
+                .show();
     }
 }
