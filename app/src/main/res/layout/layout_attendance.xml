@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="@dimen/icon_lg"
         android:layout_height="@dimen/icon_lg"
-        android:src="@drawable/ic_checkin"/>
+        android:src="@drawable/ic_auth_blue"/>
     <TextView
         android:onClick="gotoCico"
         app:layout_constraintEnd_toEndOf="@id/iv_check_in"
@@ -23,7 +23,8 @@
         android:layout_width="0dp"
         android:lines="2"
         android:layout_height="wrap_content"
-        android:text="Masuk"/>
+        android:text="Masuk"
+        android:textColor="@color/flat_blue"/>
 
     <ImageView
         android:onClick="gotoCico"
@@ -32,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="@dimen/icon_lg"
         android:layout_height="@dimen/icon_lg"
-        android:src="@drawable/ic_checkout"/>
+        android:src="@drawable/ic_auth_red"/>
     <TextView
         android:onClick="gotoCico"
         app:layout_constraintEnd_toEndOf="@id/iv_check_out"
@@ -43,6 +44,7 @@
         android:layout_width="0dp"
         android:lines="2"
         android:layout_height="wrap_content"
+        android:textColor="@color/flat_red"
         android:text="Pulang"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

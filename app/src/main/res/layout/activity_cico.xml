@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.Button.Icon"
-        app:icon="@drawable/ic_fingerprint"
+        app:icon="@drawable/ic_auth_blue"
         android:text="Autentikasi"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
