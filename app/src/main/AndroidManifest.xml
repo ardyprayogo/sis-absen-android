@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Absensis"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.employee.CreateEmployeeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.employee.EmployeeActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.level.LevelActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

@@ -83,4 +83,8 @@ public class Level {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return levelName;
+    }
 }

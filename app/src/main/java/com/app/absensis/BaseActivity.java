@@ -13,7 +13,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class BaseActivity extends AppCompatActivity {
 
     private MaterialAlertDialogBuilder dialogBuilder;
-    private AlertDialog progressDialog;
+    private AlertDialog progressDialog = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

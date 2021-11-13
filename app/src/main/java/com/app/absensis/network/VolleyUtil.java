@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.app.absensis.model.employee.Employee;
 import com.app.absensis.utils.PreferenceUtil;
 
 import org.json.JSONException;
@@ -123,6 +124,54 @@ public class VolleyUtil {
             e.printStackTrace();
         }
     }
+
+    public static void getListEmployee(Context context, VolleyResponseListener listener) {
+        sendGetRequest(context, Route.URL_EMPLOYEE_LIST, null, listener);
+    }
+
+    public static void createEmployee(Context context, Employee employee, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("name", employee.getEmployeeName());
+            object.put("email", employee.getEmployeeEmail());
+            object.put("password", employee.getPassword());
+            object.put("password_confirmation", employee.getPassword());
+            object.put("address", employee.getEmployeeAddress());
+            object.put("phone", employee.getEmployeePhone());
+            object.put("level_id", employee.getLevelId());
+            object.put("division_id", employee.getDivisionId());
+            sendPostRequest(context, Route.URL_EMPLOYEE_CREATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateEmployee(Context context, Employee employee, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", employee.getId());
+            object.put("name", employee.getEmployeeName());
+            object.put("email", employee.getEmployeeEmail());
+            object.put("address", employee.getEmployeeAddress());
+            object.put("phone", employee.getEmployeePhone());
+            object.put("level_id", employee.getLevelId());
+            object.put("division_id", employee.getDivisionId());
+            sendPostRequest(context, Route.URL_EMPLOYEE_UPDATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteEmployee(Context context, int id, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", id);
+            sendPostRequest(context, Route.URL_EMPLOYEE_DELETE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static void sendPostRequest(Context context,
                                         String url,

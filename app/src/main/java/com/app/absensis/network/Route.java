@@ -19,4 +19,10 @@ public class Route {
     public static final String URL_LEVEL_CREATE = "level/create";
     public static final String URL_LEVEL_UPDATE = "level/update";
     public static final String URL_LEVEL_DELETE = "level/delete";
+
+    // EMPLOYEE
+    public static final String URL_EMPLOYEE_LIST = "employee/get";
+    public static final String URL_EMPLOYEE_CREATE = "employee/create";
+    public static final String URL_EMPLOYEE_UPDATE = "employee/update";
+    public static final String URL_EMPLOYEE_DELETE = "employee/delete";
 }

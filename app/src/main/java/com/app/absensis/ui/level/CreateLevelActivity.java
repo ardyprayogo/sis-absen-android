@@ -75,7 +75,7 @@ public class CreateLevelActivity extends BaseActivity {
             @Override
             public void onResponse(JSONObject response) {
                 dismissLoading();
-                showDialogConfirm("Success", "Level berhasil ditambah.", new DialogInterface.OnClickListener() {
+                showDialogConfirm("Success", "Jabatan berhasil ditambah.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
@@ -96,7 +96,7 @@ public class CreateLevelActivity extends BaseActivity {
             @Override
             public void onResponse(JSONObject response) {
                 dismissLoading();
-                showDialogConfirm("Success", "Level berhasil diupdate.", new DialogInterface.OnClickListener() {
+                showDialogConfirm("Success", "Jabatan berhasil diupdate.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
@@ -117,7 +117,7 @@ public class CreateLevelActivity extends BaseActivity {
             @Override
             public void onResponse(JSONObject response) {
                 dismissLoading();
-                showDialogConfirm("Success", "Level berhasil dihapus.", new DialogInterface.OnClickListener() {
+                showDialogConfirm("Success", "Jabatan berhasil dihapus.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();

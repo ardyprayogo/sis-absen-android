@@ -24,6 +24,7 @@
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_attendance.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_cico.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_division.xml" value="0.22" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_employee.xml" value="0.12" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_level.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_division.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_floating_button.xml" value="0.2" />
@@ -36,8 +37,10 @@
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_save_dlete_button.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_1item.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_division.xml" value="0.25" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_employee.xml" value="0.33" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_item.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_menu.xml" value="0.33" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/view_1textview.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/view_dialog.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/view_loading.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/menu/bottom_nav_main.xml" value="0.209375" />

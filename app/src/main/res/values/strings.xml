@@ -11,4 +11,9 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="nama_level">Nama Level</string>
+    <string name="nama">Nama</string>
+    <string name="telepon">Telepon</string>
+    <string name="alamat">Alamat</string>
+    <string name="divisi">Divisi</string>
+    <string name="jabatan">Jabatan</string>
 </resources>
