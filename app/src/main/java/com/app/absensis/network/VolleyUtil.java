@@ -89,6 +89,41 @@ public class VolleyUtil {
         }
     }
 
+    public static void getListLevel(Context context, VolleyResponseListener listener) {
+        sendGetRequest(context, Route.URL_LEVEL_LIST, null, listener);
+    }
+
+    public static void createLevel(Context context, String levelName, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("level_name", levelName);
+            sendPostRequest(context, Route.URL_LEVEL_CREATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateLevel(Context context, int id, String levelName, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", id);
+            object.put("level_name", levelName);
+            sendPostRequest(context, Route.URL_LEVEL_UPDATE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteLevel(Context context, int id, VolleyResponseListener listener) {
+        try {
+            JSONObject object = new JSONObject();
+            object.put("id", id);
+            sendPostRequest(context, Route.URL_LEVEL_DELETE, object, listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void sendPostRequest(Context context,
                                         String url,
                                         JSONObject json,

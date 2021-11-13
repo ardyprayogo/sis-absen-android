@@ -1,8 +1,9 @@
-package com.app.absensis.ui.division;
+package com.app.absensis.ui.level;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,18 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.absensis.BaseActivity;
 import com.app.absensis.R;
-import com.app.absensis.model.division.Division;
+import com.app.absensis.model.level.Level;
 import com.app.absensis.network.ViewModelErrorListener;
+import com.app.absensis.ui.division.CreateDivisionActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class DivisionActivity extends BaseActivity {
+public class LevelActivity extends BaseActivity {
 
+    private LevelViewModel viewModel;
     private FloatingActionButton fabAdd;
     private RecyclerView rvData;
-    private DivisionAdapter mAdapter;
-    private DivisionViewModel viewModel;
+    private LevelAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,26 +45,9 @@ public class DivisionActivity extends BaseActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DivisionActivity.this, CreateDivisionActivity.class);
+                Intent i = new Intent(LevelActivity.this, CreateLevelActivity.class);
                 i.putExtra("is_update", false);
                 startActivity(i);
-            }
-        });
-    }
-
-    private void getDivisions() {
-        viewModel = new DivisionViewModel();
-        viewModel.getDivisions(this, new ViewModelErrorListener() {
-            @Override
-            public void OnErrorListener(String message) {
-                dismissLoading();
-                showSimpleDialog("Error", message);
-            }
-        }).observe(this, new Observer<ArrayList<Division>>() {
-            @Override
-            public void onChanged(ArrayList<Division> divisions) {
-                dismissLoading();
-                mAdapter.setList(divisions);
             }
         });
     }
@@ -74,19 +59,35 @@ public class DivisionActivity extends BaseActivity {
         initRecycler();
     }
 
-    private void initRecycler() {
-        getDivisions();
-        mAdapter = new DivisionAdapter(DivisionActivity.this, new DivisionAdapter.DivisionAdapterInterface() {
+    private void getLevels() {
+        viewModel = new LevelViewModel();
+        viewModel.getLevels(this, new ViewModelErrorListener() {
             @Override
-            public void OnClick(Division division) {
-                Intent i = new Intent(DivisionActivity.this, CreateDivisionActivity.class);
-                i.putExtra("is_update", true);
-                i.putExtra("id", division.getId());
-                i.putExtra("division", division.getDivisionName());
-                startActivity(i);
-
+            public void OnErrorListener(String message) {
+                dismissLoading();
+                showSimpleDialog("Error", message);
+            }
+        }).observe(this, new Observer<ArrayList<Level>>() {
+            @Override
+            public void onChanged(ArrayList<Level> levels) {
+                dismissLoading();
+                adapter.setmList(levels);
             }
         });
-        rvData.setAdapter(mAdapter);
+    }
+
+    private void initRecycler() {
+        getLevels();
+        adapter = new LevelAdapter(this, new LevelAdapter.LevelAdapterInterface() {
+            @Override
+            public void OnClickListener(Level level) {
+                Intent i = new Intent(LevelActivity.this, CreateLevelActivity.class);
+                i.putExtra("is_update", true);
+                i.putExtra("id", level.getId());
+                i.putExtra("level", level.getLevelName());
+                startActivity(i);
+            }
+        });
+        rvData.setAdapter(adapter);
     }
 }

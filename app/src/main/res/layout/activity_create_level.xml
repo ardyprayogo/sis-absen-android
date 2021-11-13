@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.division.CreateDivisionActivity">
+    tools:context=".ui.level.CreateLevelActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_division"
+        android:id="@+id/edt_level"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_margin_xlg"
-        android:hint="@string/nama_divisi"
+        android:hint="@string/nama_level"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -26,5 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/padding_margin_xlg"
-        app:layout_constraintTop_toBottomOf="@id/edt_division" />
+        app:layout_constraintTop_toBottomOf="@id/edt_level" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

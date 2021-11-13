@@ -16,6 +16,7 @@ import com.app.absensis.constant.MenuConst;
 import com.app.absensis.ui.BaseFragment;
 import com.app.absensis.ui.attendance.AttendanceActivity;
 import com.app.absensis.ui.division.DivisionActivity;
+import com.app.absensis.ui.level.LevelActivity;
 import com.app.absensis.ui.menu.MenuAdapter;
 import com.app.absensis.ui.menu.MenuModel;
 
@@ -53,6 +54,9 @@ public class HomeFragment extends BaseFragment {
                         break;
                     case MenuConst.DIVISION:
                         i = new Intent(getActivity(), DivisionActivity.class);
+                        break;
+                    case MenuConst.LEVEL:
+                        i = new Intent(getActivity(), LevelActivity.class);
                         break;
                 }
                 if (i != null)

@@ -1,4 +1,4 @@
-package com.app.absensis.model.division;
+package com.app.absensis.ui.division;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;

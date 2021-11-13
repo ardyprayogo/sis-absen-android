@@ -15,17 +15,29 @@
         android:theme="@style/Theme.Absensis"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".model.division.CreateDivisionActivity"
-            android:exported="true" />
+            android:name=".ui.level.LevelActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.level.CreateLevelActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.division.CreateDivisionActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.division.DivisionActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.attendance.cico.CicoActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.attendance.AttendanceActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

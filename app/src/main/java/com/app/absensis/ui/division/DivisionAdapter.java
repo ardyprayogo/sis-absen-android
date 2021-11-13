@@ -1,4 +1,4 @@
-package com.app.absensis.model.division;
+package com.app.absensis.ui.division;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.absensis.R;
+import com.app.absensis.model.division.Division;
 
 import java.util.ArrayList;
 

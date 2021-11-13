@@ -80,6 +80,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void showDialogConfirm(String title, String message, DialogInterface.OnClickListener listener) {
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
         dialogBuilder.setTitle(title)
+                .setCancelable(false)
                 .setMessage(message)
                 .setPositiveButton("Ok", listener)
                 .show();
