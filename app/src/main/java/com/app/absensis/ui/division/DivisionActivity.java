@@ -13,6 +13,7 @@ import com.app.absensis.R;
 import com.app.absensis.model.division.Division;
 import com.app.absensis.network.ViewModelErrorListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class DivisionActivity extends BaseActivity {
     private RecyclerView rvData;
     private DivisionAdapter mAdapter;
     private DivisionViewModel viewModel;
+    private TextInputLayout edtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class DivisionActivity extends BaseActivity {
     private void initUI() {
         fabAdd = findViewById(R.id.fab_add);
         rvData = findViewById(R.id.rv_data);
+        edtName = findViewById(R.id.edt_name);
         rvData.setHasFixedSize(true);
         rvData.setLayoutManager(new LinearLayoutManager(this));
         rvData.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -48,11 +51,19 @@ public class DivisionActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+        edtName.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDefaultLoading();
+                String name = edtName.getEditText().getText().toString();
+                getDivisions(name);
+            }
+        });
     }
 
-    private void getDivisions() {
+    private void getDivisions(String name) {
         viewModel = new DivisionViewModel();
-        viewModel.getDivisions(this, new ViewModelErrorListener() {
+        viewModel.getDivisions(this, name, new ViewModelErrorListener() {
             @Override
             public void OnErrorListener(String message) {
                 dismissLoading();
@@ -75,7 +86,7 @@ public class DivisionActivity extends BaseActivity {
     }
 
     private void initRecycler() {
-        getDivisions();
+        getDivisions(null);
         mAdapter = new DivisionAdapter(DivisionActivity.this, new DivisionAdapter.DivisionAdapterInterface() {
             @Override
             public void OnClick(Division division) {

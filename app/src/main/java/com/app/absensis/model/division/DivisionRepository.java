@@ -20,9 +20,9 @@ public class DivisionRepository {
         this.listener = listener;
     }
 
-    public MutableLiveData<ArrayList<Division>> getDivisions(Context context) {
+    public MutableLiveData<ArrayList<Division>> getDivisions(Context context, String name) {
         final MutableLiveData<ArrayList<Division>> data = new MutableLiveData<>();
-        VolleyUtil.getListDivision(context, new VolleyResponseListener() {
+        VolleyUtil.getListDivision(context, name, new VolleyResponseListener() {
             @Override
             public void onError(String error) {
                 listener.OnErrorListener(error);

@@ -28,13 +28,14 @@
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_employee.xml" value="0.12" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_level.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_division.xml" value="0.209375" />
-        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_floating_button.xml" value="0.2" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_floating_button.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/bottom_layout_attendance.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_attendance.xml" value="0.1" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_save_delete_button.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_save_dlete_button.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_1item.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_division.xml" value="0.25" />
@@ -49,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

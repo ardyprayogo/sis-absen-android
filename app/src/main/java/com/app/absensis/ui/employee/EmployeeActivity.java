@@ -15,6 +15,7 @@ import com.app.absensis.model.employee.Employee;
 import com.app.absensis.model.level.Level;
 import com.app.absensis.network.ViewModelErrorListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class EmployeeActivity extends BaseActivity {
     private RecyclerView rvData;
     private EmployeeAdapter mAdapter;
     private EmployeeViewModel viewModel;
+    private TextInputLayout edtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class EmployeeActivity extends BaseActivity {
     private void initUI() {
         fabAdd = findViewById(R.id.fab_add);
         rvData = findViewById(R.id.rv_data);
+        edtName = findViewById(R.id.edt_name);
         rvData.setHasFixedSize(true);
         rvData.setLayoutManager(new LinearLayoutManager(this));
         rvData.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -50,6 +53,15 @@ public class EmployeeActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+
+        edtName.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDefaultLoading();
+                String name = edtName.getEditText().getText().toString();
+                getEmployees(name);
+            }
+        });
     }
 
     @Override
@@ -59,9 +71,9 @@ public class EmployeeActivity extends BaseActivity {
         initRecycler();
     }
 
-    private void getEmployees() {
+    private void getEmployees(String name) {
         viewModel = new EmployeeViewModel();
-        viewModel.getEmployees(this, new ViewModelErrorListener() {
+        viewModel.getEmployees(this, name, new ViewModelErrorListener() {
             @Override
             public void OnErrorListener(String message) {
                 dismissLoading();
@@ -77,7 +89,7 @@ public class EmployeeActivity extends BaseActivity {
     }
 
     private void initRecycler() {
-        getEmployees();
+        getEmployees(null);
         mAdapter = new EmployeeAdapter(this, new EmployeeAdapter.EmployeeAdapterInterface() {
             @Override
             public void OnClickListener(Employee employee) {

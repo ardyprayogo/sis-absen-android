@@ -55,8 +55,9 @@ public class VolleyUtil {
         sendPostRequest(context, Route.URL_LOGOUT, null, listener);
     }
 
-    public static void getListDivision(Context context, VolleyResponseListener listener) {
-        sendGetRequest(context, Route.URL_DIVISION_LIST, null, listener);
+    public static void getListDivision(Context context, String name, VolleyResponseListener listener) {
+        String param = (name == null) ? null : "name="+name;
+        sendGetRequest(context, Route.URL_DIVISION_LIST, param, listener);
     }
 
     public static void createDivsion(Context context, String divisionName, VolleyResponseListener listener) {
@@ -90,8 +91,9 @@ public class VolleyUtil {
         }
     }
 
-    public static void getListLevel(Context context, VolleyResponseListener listener) {
-        sendGetRequest(context, Route.URL_LEVEL_LIST, null, listener);
+    public static void getListLevel(Context context, String name, VolleyResponseListener listener) {
+        String param = (name == null) ? null : "name="+name;
+        sendGetRequest(context, Route.URL_LEVEL_LIST, param, listener);
     }
 
     public static void createLevel(Context context, String levelName, VolleyResponseListener listener) {
@@ -125,8 +127,9 @@ public class VolleyUtil {
         }
     }
 
-    public static void getListEmployee(Context context, VolleyResponseListener listener) {
-        sendGetRequest(context, Route.URL_EMPLOYEE_LIST, null, listener);
+    public static void getListEmployee(Context context, String name, VolleyResponseListener listener) {
+        String param = (name == null) ? null : "name="+name;
+        sendGetRequest(context, Route.URL_EMPLOYEE_LIST, param, listener);
     }
 
     public static void createEmployee(Context context, Employee employee, VolleyResponseListener listener) {
@@ -239,12 +242,12 @@ public class VolleyUtil {
                                        String param,
                                        final VolleyResponseListener listener) {
         String finalUrl = url + "?" + param;
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Route.BASE_URL + url, null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Route.BASE_URL + finalUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         listener.onResponse(response);
-                        Log.d("API", Route.BASE_URL + url + " => " + response.toString());
+                        Log.d("API", Route.BASE_URL + finalUrl + " => " + response.toString());
                     }
                 },
                 new Response.ErrorListener() {

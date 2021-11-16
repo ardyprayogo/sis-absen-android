@@ -24,9 +24,9 @@ public class LevelRepository {
         this.mListener = mListener;
     }
 
-    public MutableLiveData<ArrayList<Level>> getLevels(Context context) {
+    public MutableLiveData<ArrayList<Level>> getLevels(Context context, String name) {
         final MutableLiveData<ArrayList<Level>> data = new MutableLiveData<>();
-        VolleyUtil.getListLevel(context, new VolleyResponseListener() {
+        VolleyUtil.getListLevel(context, name, new VolleyResponseListener() {
             @Override
             public void onError(String error) {
                  mListener.OnErrorListener(error);

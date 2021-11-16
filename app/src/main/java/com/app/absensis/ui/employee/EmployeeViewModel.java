@@ -24,10 +24,10 @@ public class EmployeeViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Division>> mutableLiveDataDiv;
     private MutableLiveData<ArrayList<Level>> mutableLiveDataDLev;
 
-    public MutableLiveData<ArrayList<Employee>> getEmployees(Context context, ViewModelErrorListener listener) {
+    public MutableLiveData<ArrayList<Employee>> getEmployees(Context context, String name, ViewModelErrorListener listener) {
         if (repository == null) {
             repository = new EmployeeRepository(listener);
-            mutableLiveData = repository.getEmployees(context);
+            mutableLiveData = repository.getEmployees(context, name);
         }
         return mutableLiveData;
     }
@@ -35,7 +35,7 @@ public class EmployeeViewModel extends ViewModel {
     public MutableLiveData<ArrayList<Division>> getDivisions(Context context, ViewModelErrorListener listener) {
         if (divRepository == null) {
             divRepository = new DivisionRepository(listener);
-            mutableLiveDataDiv = divRepository.getDivisions(context);
+            mutableLiveDataDiv = divRepository.getDivisions(context, null);
         }
         return mutableLiveDataDiv;
     }
@@ -43,7 +43,7 @@ public class EmployeeViewModel extends ViewModel {
     public MutableLiveData<ArrayList<Level>> getLevels(Context context, ViewModelErrorListener listener) {
         if (levRepository == null) {
             levRepository = new LevelRepository(listener);
-            mutableLiveDataDLev = levRepository.getLevels(context);
+            mutableLiveDataDLev = levRepository.getLevels(context, null);
         }
         return mutableLiveDataDLev;
     }

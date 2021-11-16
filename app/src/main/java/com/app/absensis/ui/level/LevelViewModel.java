@@ -15,10 +15,10 @@ public class LevelViewModel {
     private LevelRepository repository;
     private MutableLiveData<ArrayList<Level>> liveData;
 
-    public MutableLiveData<ArrayList<Level>> getLevels(Context context, ViewModelErrorListener listener) {
+    public MutableLiveData<ArrayList<Level>> getLevels(Context context, String name, ViewModelErrorListener listener) {
         if (repository == null) {
             repository = new LevelRepository(listener);
-            liveData = repository.getLevels(context);
+            liveData = repository.getLevels(context, name);
         }
         return liveData;
     }

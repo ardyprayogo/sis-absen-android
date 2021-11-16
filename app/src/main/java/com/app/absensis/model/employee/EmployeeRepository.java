@@ -25,9 +25,9 @@ public class EmployeeRepository {
         this.listener = listener;
     }
 
-    public MutableLiveData<ArrayList<Employee>> getEmployees(Context context) {
+    public MutableLiveData<ArrayList<Employee>> getEmployees(Context context, String name) {
         final MutableLiveData<ArrayList<Employee>> data = new MutableLiveData<>();
-        VolleyUtil.getListEmployee(context, new VolleyResponseListener() {
+        VolleyUtil.getListEmployee(context, name, new VolleyResponseListener() {
             @Override
             public void onError(String error) {
                 listener.OnErrorListener(error);

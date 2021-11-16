@@ -15,6 +15,7 @@ import com.app.absensis.model.level.Level;
 import com.app.absensis.network.ViewModelErrorListener;
 import com.app.absensis.ui.division.CreateDivisionActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class LevelActivity extends BaseActivity {
     private FloatingActionButton fabAdd;
     private RecyclerView rvData;
     private LevelAdapter adapter;
+    private TextInputLayout edtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class LevelActivity extends BaseActivity {
     private void initUI() {
         fabAdd = findViewById(R.id.fab_add);
         rvData = findViewById(R.id.rv_data);
+        edtName = findViewById(R.id.edt_name);
         rvData.setHasFixedSize(true);
         rvData.setLayoutManager(new LinearLayoutManager(this));
         rvData.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -50,6 +53,14 @@ public class LevelActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+        edtName.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDefaultLoading();
+                String name = edtName.getEditText().getText().toString();
+                getLevels(name);
+            }
+        });
     }
 
     @Override
@@ -59,9 +70,9 @@ public class LevelActivity extends BaseActivity {
         initRecycler();
     }
 
-    private void getLevels() {
+    private void getLevels(String name) {
         viewModel = new LevelViewModel();
-        viewModel.getLevels(this, new ViewModelErrorListener() {
+        viewModel.getLevels(this, name, new ViewModelErrorListener() {
             @Override
             public void OnErrorListener(String message) {
                 dismissLoading();
@@ -77,7 +88,7 @@ public class LevelActivity extends BaseActivity {
     }
 
     private void initRecycler() {
-        getLevels();
+        getLevels(null);
         adapter = new LevelAdapter(this, new LevelAdapter.LevelAdapterInterface() {
             @Override
             public void OnClickListener(Level level) {

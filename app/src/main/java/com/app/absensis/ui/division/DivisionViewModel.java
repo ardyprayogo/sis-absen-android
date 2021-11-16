@@ -16,10 +16,10 @@ public class DivisionViewModel extends ViewModel {
     private DivisionRepository repository;
     private MutableLiveData<ArrayList<Division>> mutableLiveData;
 
-    public MutableLiveData<ArrayList<Division>> getDivisions(Context context, ViewModelErrorListener listener) {
+    public MutableLiveData<ArrayList<Division>> getDivisions(Context context, String name, ViewModelErrorListener listener) {
         if (repository == null) {
             repository = new DivisionRepository(listener);
-            mutableLiveData = repository.getDivisions(context);
+            mutableLiveData = repository.getDivisions(context, name);
         }
         return mutableLiveData;
     }

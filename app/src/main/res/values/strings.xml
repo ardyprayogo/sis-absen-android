@@ -16,4 +16,5 @@
     <string name="alamat">Alamat</string>
     <string name="divisi">Divisi</string>
     <string name="jabatan">Jabatan</string>
+    <string name="cari">Cari..</string>
 </resources>
