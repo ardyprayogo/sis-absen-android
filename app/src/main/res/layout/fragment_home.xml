@@ -5,46 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_header"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             android:scaleType="fitXY"
             android:src="@drawable/home_bg_top" />
 
         <RelativeLayout
             android:elevation="8dp"
             android:id="@+id/rl_card"
+            app:layout_constraintTop_toTopOf="@id/iv_header"
             android:layout_marginTop="@dimen/padding_margin_xxlg"
-            android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
+            android:layout_marginHorizontal="@dimen/padding_margin_xlg"
             android:background="@drawable/home_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></RelativeLayout>
 
         <TextView
             android:id="@+id/tv_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_card"
-            android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
-            android:layout_marginTop="@dimen/padding_margin_xlg"
-            android:text="Main Menu"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            app:layout_constraintTop_toBottomOf="@id/rl_card"
+            app:layout_constraintStart_toStartOf="@id/rl_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/padding_margin_lg"
+            android:text="Halo, User"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_md"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tv_header"
+            app:layout_constraintTop_toBottomOf="@id/tv_header"
             android:layout_marginTop="@dimen/padding_margin_xlg"
-            android:paddingHorizontal="@dimen/padding_margin_xlg" />
-    </RelativeLayout>
+            android:layout_marginHorizontal="@dimen/padding_margin_lg"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

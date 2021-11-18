@@ -1,10 +1,14 @@
 package com.app.absensis.ui.attendance;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,8 +36,36 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
-        initUI();
-        initLocation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isGpsActive()) {
+            initUI();
+            initLocation();
+        } else {
+            showDialogConfirm("GPS",
+                    "GPS Harus Diaktifkan",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    });
+        }
+    }
+
+    private boolean isGpsActive() {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean retval = false;
+
+        try {
+            retval = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return retval;
     }
 
     private void initUI() {
@@ -72,7 +104,6 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
     }
 
     private void updateCamera(Location location) {
-        Log.e("TAG", "onLocationChanged: ");
         LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
@@ -81,12 +112,22 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
     @Override
     protected void onPause() {
         super.onPause();
-        locationUtil.removeLocation();
-        mMap.clear();
+        if (locationUtil != null) {
+            locationUtil.removeLocation();
+            mMap.clear();
+        }
     }
 
     public void gotoCico(View view) {
-        startActivity(new Intent(this, CicoActivity.class));
+        if (view.getId() == R.id.iv_check_in) {
+            Intent i = new Intent(this, CicoActivity.class);
+            i.putExtra("is_checkin", true);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(this, CicoActivity.class);
+            i.putExtra("is_checkin", false);
+            startActivity(i);
+        }
     }
 
 }

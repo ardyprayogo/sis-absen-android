@@ -4,192 +4,201 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/padding_margin_xlg">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_name_placeholder"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="Nama"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            android:scaleType="fitXY"
+            android:src="@drawable/home_bg_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_user"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-160dp"
+            android:src="@drawable/ic_user"
+            app:layout_constraintEnd_toEndOf="@id/iv_header"
+            app:layout_constraintStart_toStartOf="@id/iv_header"
+            app:layout_constraintTop_toBottomOf="@id/iv_header" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_name_placeholder"
-            android:gravity="end"
+            android:layout_marginTop="@dimen/padding_margin_xlg"
             android:text="Profile"
-            android:textSize="@dimen/text_md" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xlg"
+            app:layout_constraintEnd_toEndOf="@id/iv_header"
+            app:layout_constraintStart_toStartOf="@id/iv_header"
+            app:layout_constraintTop_toBottomOf="@id/iv_user" />
 
-        <View
-            android:id="@+id/line_name"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:layout_below="@+id/tv_name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/purple_200"/>
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_margin_xlg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_header">
 
-        <TextView
-            android:id="@+id/tv_address_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_name"
-            android:layout_alignParentLeft="true"
-            android:text="Alamat"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_address_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Alamat"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line_name"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_address_placeholder"
-            android:gravity="end"
-            android:text="Alamat"
-            android:textSize="@dimen/text_md" />
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_address_placeholder"
+                android:gravity="end"
+                android:text="Alamat"
+                android:textSize="@dimen/text_md" />
 
-        <View
-            android:id="@+id/line_address"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/tv_address"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:background="@color/purple_200" />
+            <View
+                android:id="@+id/line_address"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_address"
+                android:layout_marginVertical="@dimen/padding_margin_xlg"
+                android:background="@color/flat_blue" />
 
-        <TextView
-            android:id="@+id/tv_hp_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_address"
-            android:layout_alignParentLeft="true"
-            android:text="HP"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_hp_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_address"
+                android:layout_alignParentLeft="true"
+                android:text="HP"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_hp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line_address"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_hp_placeholder"
-            android:gravity="end"
-            android:text="HP"
-            android:textSize="@dimen/text_md" />
+            <TextView
+                android:id="@+id/tv_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_address"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_hp_placeholder"
+                android:gravity="end"
+                android:text="HP"
+                android:textSize="@dimen/text_md" />
 
-        <View
-            android:id="@+id/line_hp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/tv_hp"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:background="@color/purple_200" />
+            <View
+                android:id="@+id/line_hp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_hp"
+                android:layout_marginVertical="@dimen/padding_margin_xlg"
+                android:background="@color/flat_blue" />
 
-        <TextView
-            android:id="@+id/tv_email_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_hp"
-            android:layout_alignParentLeft="true"
-            android:text="Email"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_email_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_hp"
+                android:layout_alignParentLeft="true"
+                android:text="Email"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line_hp"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_hp_placeholder"
-            android:gravity="end"
-            android:text="Email"
-            android:textSize="@dimen/text_md" />
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_hp"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_hp_placeholder"
+                android:gravity="end"
+                android:text="Email"
+                android:textSize="@dimen/text_md" />
 
-        <View
-            android:id="@+id/line_email"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/tv_email"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:background="@color/purple_200" />
+            <View
+                android:id="@+id/line_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_email"
+                android:layout_marginVertical="@dimen/padding_margin_xlg"
+                android:background="@color/flat_blue" />
 
-        <TextView
-            android:id="@+id/tv_division_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_email"
-            android:layout_alignParentLeft="true"
-            android:text="Divisi"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_division_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_email"
+                android:layout_alignParentLeft="true"
+                android:text="Divisi"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_division"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line_email"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_division_placeholder"
-            android:gravity="end"
-            android:text="Divisi"
-            android:textSize="@dimen/text_md" />
+            <TextView
+                android:id="@+id/tv_division"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_email"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_division_placeholder"
+                android:gravity="end"
+                android:text="Divisi"
+                android:textSize="@dimen/text_md" />
 
-        <TextView
-            android:id="@+id/tv_level_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_level"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="@dimen/padding_margin_lg"
-            android:text="Jabatan"
-            android:textSize="@dimen/text_md"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_level_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_level"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/padding_margin_lg"
+                android:text="Jabatan"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line_level"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/tv_level_placeholder"
-            android:gravity="end"
-            android:text="Jabatan"
-            android:textSize="@dimen/text_md" />
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_level"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_level_placeholder"
+                android:gravity="end"
+                android:text="Jabatan"
+                android:textSize="@dimen/text_md" />
 
-        <View
-            android:id="@+id/line_level"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/tv_division"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:background="@color/purple_200" />
+            <View
+                android:id="@+id/line_level"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_division"
+                android:layout_marginVertical="@dimen/padding_margin_xlg"
+                android:background="@color/flat_blue" />
 
-        <View
-            android:id="@+id/line_division"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/tv_level"
-            android:layout_marginVertical="@dimen/padding_margin_xlg"
-            android:background="@color/purple_200" />
+            <View
+                android:id="@+id/line_division"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_level"
+                android:layout_marginVertical="@dimen/padding_margin_xlg"
+                android:background="@color/flat_blue" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line_division"
-            android:layout_marginTop="@dimen/padding_margin_xxlg"
-            android:text="Logout" />
-    </RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_division"
+                android:layout_marginTop="@dimen/padding_margin_xxlg"
+                android:text="Logout" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>

@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/Absensis/app/src/main/res/drawable/cico_bg_top.xml" value="0.11979166666666667" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/home_bg_top.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/home_card.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/home_top.xml" value="0.22552083333333334" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_auth_blue.xml" value="0.11979166666666667" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_auth_red.xml" value="0.22552083333333334" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_auth_white.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_checkin.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_failed.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_fingerprint.xml" value="0.22552083333333334" />
@@ -22,8 +25,9 @@
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_outline_user.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_plus.xml" value="0.22552083333333334" />
         <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_success.xml" value="0.22552083333333334" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/drawable/ic_user.xml" value="0.10572916666666667" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_attendance.xml" value="0.22" />
-        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_cico.xml" value="0.25" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_cico.xml" value="0.2834978843441467" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_division.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_employee.xml" value="0.12" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_create_level.xml" value="0.209375" />
@@ -31,10 +35,11 @@
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_floating_button.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/bottom_layout_attendance.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
-        <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_attendance.xml" value="0.1" />
+        <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_attendance.xml" value="0.22" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_save_delete_button.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/layout_save_dlete_button.xml" value="0.209375" />
         <entry key="..\:/Project/Absensis/app/src/main/res/layout/list_1item.xml" value="0.209375" />

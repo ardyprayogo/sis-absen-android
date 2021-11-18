@@ -12,7 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class BaseFragment extends Fragment {
 
     private MaterialAlertDialogBuilder dialogBuilder;
-    private AlertDialog progressDialog;
+    private AlertDialog progressDialog = null;
 
     public void showLoading(String message, boolean cancelable) {
         if (progressDialog == null || !progressDialog.isShowing()) {
@@ -38,5 +38,17 @@ public class BaseFragment extends Fragment {
         dialogBuilder.setTitle(title)
                 .setMessage(message)
                 .show();
+    }
+
+    public void showDefaultLoading() {
+        if (progressDialog == null || !progressDialog.isShowing()) {
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.view_loading, null, false);
+            TextView tvLoading = view.findViewById(R.id.tv_loading);
+            tvLoading.setText(getString(R.string.loading));
+            dialogBuilder = new MaterialAlertDialogBuilder(getContext());
+            dialogBuilder.setView(view).setCancelable(false);
+            progressDialog = dialogBuilder.create();
+            progressDialog.show();
+        }
     }
 }

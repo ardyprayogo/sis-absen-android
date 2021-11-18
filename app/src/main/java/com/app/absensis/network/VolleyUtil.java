@@ -55,6 +55,14 @@ public class VolleyUtil {
         sendPostRequest(context, Route.URL_LOGOUT, null, listener);
     }
 
+    public static void sendCheckin(Context context, VolleyResponseListener listener) {
+        sendPostRequest(context, Route.URL_CHECK_IN, null, listener);
+    }
+
+    public static void sendCheckout(Context context, VolleyResponseListener listener) {
+        sendPostRequest(context, Route.URL_CHECK_OUT, null, listener);
+    }
+
     public static void getListDivision(Context context, String name, VolleyResponseListener listener) {
         String param = (name == null) ? null : "name="+name;
         sendGetRequest(context, Route.URL_DIVISION_LIST, param, listener);

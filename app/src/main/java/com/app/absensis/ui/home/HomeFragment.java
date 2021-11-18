@@ -5,14 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.absensis.R;
 import com.app.absensis.constant.MenuConst;
+import com.app.absensis.model.profile.Profile;
+import com.app.absensis.network.ViewModelErrorListener;
 import com.app.absensis.ui.BaseFragment;
 import com.app.absensis.ui.attendance.AttendanceActivity;
 import com.app.absensis.ui.division.DivisionActivity;
@@ -20,12 +25,14 @@ import com.app.absensis.ui.employee.EmployeeActivity;
 import com.app.absensis.ui.level.LevelActivity;
 import com.app.absensis.ui.menu.MenuAdapter;
 import com.app.absensis.ui.menu.MenuModel;
+import com.app.absensis.ui.profile.ProfileViewModel;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends BaseFragment {
 
     private RecyclerView rvMainMenu;
+    private TextView tvHeader;
 
     @Nullable
     @Override
@@ -37,9 +44,12 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initUI(view);
+        getProfile();
     }
 
     private void initUI(View view) {
+        showDefaultLoading();
+        tvHeader = view.findViewById(R.id.tv_header);
         rvMainMenu = view.findViewById(R.id.rv_main_menu);
         rvMainMenu.setHasFixedSize(true);
         rvMainMenu.setLayoutManager(new GridLayoutManager(getContext(), 4));
@@ -68,6 +78,24 @@ public class HomeFragment extends BaseFragment {
             }
         });
         rvMainMenu.setAdapter(adapter);
+    }
+
+    private void getProfile() {
+        ProfileViewModel profileViewModel = new ProfileViewModel();
+        ProfileViewModel viewModel = ViewModelProviders.of(this).get(profileViewModel.getClass());
+        viewModel.getProfile(getContext(), new ViewModelErrorListener() {
+            @Override
+            public void OnErrorListener(String message) {
+                dismissLoading();
+                showSimpleDialog("Error", message);
+            }
+        }).observe(getViewLifecycleOwner(), new Observer<Profile>() {
+            @Override
+            public void onChanged(Profile profile) {
+                tvHeader.setText("Halo, "+profile.getEmployeeName());
+                dismissLoading();
+            }
+        });
     }
 
 }

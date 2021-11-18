@@ -25,7 +25,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        checkToken();
         initUI();
         initEvent();
     }
@@ -85,11 +84,6 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    private void checkToken() {
-        if (PreferenceUtil.checkTokenExpired(this))
-            goMain();
     }
 
     private void goMain() {

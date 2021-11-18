@@ -6,15 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".ui.attendance.cico.CicoActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_auth"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/cico_bg_top"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_auth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        app:icon="@drawable/ic_auth_blue"
-        android:text="Autentikasi"/>
+        android:src="@drawable/ic_auth_white"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_bg" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_auth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_xxlg"
+        android:text="Autentikasi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_auth" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_done"
+        android:layout_width="@dimen/height_width_lg"
+        android:layout_height="@dimen/height_width_lg"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_bg"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/done" />
+
+    <TextView
+        android:id="@+id/tv_auth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_xxlg"
+        android:text="Absen Berhasil"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_xlg"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/animation_done" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
