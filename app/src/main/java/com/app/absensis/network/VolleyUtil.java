@@ -18,17 +18,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class VolleyUtil {
 
-    public static void getReportAttendance(Context context, VolleyResponseListener listener) {
+    public static void getReportAttendance(Context context, Date dateStart, Date dateEnd, VolleyResponseListener listener) {
         try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String ds = sdf.format(dateStart);
+            String de = sdf.format(dateEnd);
             String url = Route.URL_REPORT_ATTENDANCE;
             JSONObject object = new JSONObject();
-            object.put("date_start", "2021-11-01");
-            object.put("date_end", "2021-11-30");
+            object.put("date_start", ds);
+            object.put("date_end", de);
             sendPostRequest(context, url, object, listener);
         } catch (Exception e) {
             e.printStackTrace();

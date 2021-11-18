@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_attendance"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_margin_xxlg">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tanggal"
+        android:textSize="@dimen/text_lg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <ImageView
+        android:id="@+id/iv_check_in"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_checkin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_ci"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_xlg"
+        android:text="07:50:56"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintBottom_toBottomOf="@id/iv_check_in"
+        app:layout_constraintStart_toEndOf="@id/iv_check_in"
+        app:layout_constraintTop_toTopOf="@id/iv_check_in" />
+
+    <ImageView
+        android:id="@+id/iv_check_out"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_checkout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_check_in" />
+
+
+    <TextView
+        android:id="@+id/tv_co"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_xlg"
+        android:text="07:50:56"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintBottom_toBottomOf="@id/iv_check_out"
+        app:layout_constraintStart_toEndOf="@id/iv_check_out"
+        app:layout_constraintTop_toTopOf="@id/iv_check_out" />
+
+    <ImageView
+        android:id="@+id/iv_clock"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_check_out" />
+
+    <TextView
+        android:id="@+id/tv_wh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_xlg"
+        android:text="07:50:56"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintBottom_toBottomOf="@id/iv_clock"
+        app:layout_constraintStart_toEndOf="@id/iv_clock"
+        app:layout_constraintTop_toTopOf="@id/iv_clock" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

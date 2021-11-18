@@ -13,5 +13,6 @@
     <color name="flat_dark_blue">#01579B</color>
 
     <color name="flat_red">#B71C1C</color>
+    <color name="flat_red_20">#20B71C1C</color>
 
 </resources>
