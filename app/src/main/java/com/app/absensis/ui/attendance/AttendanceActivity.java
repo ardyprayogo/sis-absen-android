@@ -9,7 +9,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -24,13 +23,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class AttendanceActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LocationUtil locationUtil;
     private ImageView ivCi, ivCo;
+
+    private Circle mCircle;
+    private LatLng office = new LatLng(-6.1958089, 106.825477);
+    private Double lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +86,9 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
         locationUtil = new LocationUtil(this, new LocationUtil.LocationUtilInterface() {
             @Override
             public void onLocationChanged(Location location) {
-                updateCamera(location);
+//                updateCamera(location);
+                lat = location.getLatitude();
+                lng = location.getLongitude();
             }
         });
         locationUtil.requestLocation();
@@ -100,11 +109,13 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
         mMap.setTrafficEnabled(false);
         mMap.setBuildingsEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        drawMarkerWithCircle(office);
+        updateCamera(office);
 
     }
 
-    private void updateCamera(Location location) {
-        LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+    private void updateCamera(LatLng location) {
+        LatLng currentLocation = new LatLng(location.latitude, location.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
     }
@@ -119,14 +130,38 @@ public class AttendanceActivity extends BaseActivity implements OnMapReadyCallba
     }
 
     public void gotoCico(View view) {
-        if (view.getId() == R.id.iv_check_in) {
-            Intent i = new Intent(this, CicoActivity.class);
-            i.putExtra("is_checkin", true);
-            startActivity(i);
+        inArea(view);
+    }
+
+    private void drawMarkerWithCircle(LatLng position){
+        double radiusInMeters = 20.0;
+        int strokeColor = 0xffff0000; //red outline
+        int shadeColor = 0x44ff0000; //opaque red fill
+
+        CircleOptions circleOptions = new CircleOptions().center(position).radius(radiusInMeters).fillColor(shadeColor).strokeColor(strokeColor).strokeWidth(8);
+        mCircle = mMap.addCircle(circleOptions);
+
+        MarkerOptions markerOptions = new MarkerOptions().position(position);
+        mMap.addMarker(markerOptions);
+    }
+
+    private void inArea(View view) {
+        float[] distance = new float[2];
+        Location.distanceBetween(lat, lng,
+                mCircle.getCenter().latitude, mCircle.getCenter().longitude, distance);
+
+        if(distance[0] > mCircle.getRadius()){
+            showSimpleDialog("Error", "Jarak kantor lebih dari 20 meter");
         } else {
-            Intent i = new Intent(this, CicoActivity.class);
-            i.putExtra("is_checkin", false);
-            startActivity(i);
+            if (view.getId() == R.id.iv_check_in) {
+                Intent i = new Intent(this, CicoActivity.class);
+                i.putExtra("is_checkin", true);
+                startActivity(i);
+            } else {
+                Intent i = new Intent(this, CicoActivity.class);
+                i.putExtra("is_checkin", false);
+                startActivity(i);
+            }
         }
     }
 
