@@ -1,51 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/iv_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_bg_top"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_header"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_xxlg"
+        android:text="Halo, \n User"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_lg"
+        app:layout_constraintStart_toStartOf="@id/rl_card"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rl_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_margin_xxlg"
+        android:layout_marginTop="@dimen/padding_margin_xxlg"
+        android:background="@drawable/home_card"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_header">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/home_bg_top" />
+            app:constraint_referenced_ids="ll_work_day, ll_attendance, ll_percentation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:elevation="8dp"
-            android:id="@+id/rl_card"
-            app:layout_constraintTop_toTopOf="@id/iv_header"
-            android:layout_marginTop="@dimen/padding_margin_xxlg"
-            android:layout_marginHorizontal="@dimen/padding_margin_xlg"
-            android:background="@drawable/home_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_header"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/rl_card"
-            app:layout_constraintStart_toStartOf="@id/rl_card"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_attendance"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/padding_margin_lg"
-            android:text="Halo, User"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_md"/>
+            android:orientation="vertical"
+            android:padding="@dimen/padding_margin_xlg">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_main_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_header"
-            android:layout_marginTop="@dimen/padding_margin_xlg"
-            android:layout_marginHorizontal="@dimen/padding_margin_lg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Kehadiran" />
+
+            <TextView
+                android:id="@+id/tv_attendance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/flat_light_blue"
+                android:textSize="@dimen/text_xlg"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_work_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_margin_xlg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hari Kerja" />
+
+            <TextView
+                android:id="@+id/tv_work_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/flat_light_blue"
+                android:textSize="@dimen/text_xlg"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_percentation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_margin_xlg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persen" />
+
+            <TextView
+                android:id="@+id/tv_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0%"
+                android:textColor="@color/flat_blue"
+                android:textSize="@dimen/text_lg"
+                android:textStyle="bold" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/padding_margin_xxlg"
+        android:paddingHorizontal="@dimen/padding_margin_lg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

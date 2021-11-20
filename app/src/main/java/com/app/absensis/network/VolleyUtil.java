@@ -52,6 +52,10 @@ public class VolleyUtil {
         }
     }
 
+    public static void getPercent(Context context, VolleyResponseListener listener) {
+        sendPostRequest(context, Route.URL_PERCENT, null, listener);
+    }
+
     public static void getProfile(Context context, VolleyResponseListener listener) {
         sendPostRequest(context, Route.URL_PROFILE, null, listener);
     }

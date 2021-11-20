@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.absensis.R;
 import com.app.absensis.constant.MenuConst;
+import com.app.absensis.model.percent.Percent;
 import com.app.absensis.model.profile.Profile;
 import com.app.absensis.network.ViewModelErrorListener;
 import com.app.absensis.ui.BaseFragment;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 public class HomeFragment extends BaseFragment {
 
     private RecyclerView rvMainMenu;
-    private TextView tvHeader;
+    private TextView tvHeader, tvWorkDay, tvAttendance, tvPercent;
 
     @Nullable
     @Override
@@ -49,11 +50,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initUI(View view) {
-        showDefaultLoading();
         tvHeader = view.findViewById(R.id.tv_header);
         rvMainMenu = view.findViewById(R.id.rv_main_menu);
+        tvWorkDay = view.findViewById(R.id.tv_work_day);
+        tvAttendance = view.findViewById(R.id.tv_attendance);
+        tvPercent = view.findViewById(R.id.tv_percent);
         rvMainMenu.setHasFixedSize(true);
-        rvMainMenu.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        rvMainMenu.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         ArrayList<MenuModel> menuModels = MenuConst.getHomeMenu();
         MenuAdapter adapter = new MenuAdapter(getContext(), menuModels, new MenuAdapter.ManuAdapterListener() {
@@ -90,16 +93,35 @@ public class HomeFragment extends BaseFragment {
         viewModel.getProfile(getContext(), new ViewModelErrorListener() {
             @Override
             public void OnErrorListener(String message) {
-                dismissLoading();
                 showSimpleDialog("Error", message);
             }
         }).observe(getViewLifecycleOwner(), new Observer<Profile>() {
             @Override
             public void onChanged(Profile profile) {
-                tvHeader.setText("Halo, "+profile.getEmployeeName());
-                dismissLoading();
+                tvHeader.setText("Halo, "
+                        +profile.getEmployeeName()
+                        +"\n"
+                        +profile.getDivisionName()
+                        +" "
+                        +profile.getLevelName()
+                );
+            }
+        });
+        viewModel.getPercent(getContext(), new ViewModelErrorListener() {
+            @Override
+            public void OnErrorListener(String message) {
+                showSimpleDialog("Error", message);
+            }
+        }).observe(getViewLifecycleOwner(), new Observer<Percent>() {
+            @Override
+            public void onChanged(Percent percent) {
+                tvAttendance.setText(Integer.toString(percent.getAttendance()));
+                tvWorkDay.setText(Integer.toString(percent.getWork()));
+                tvPercent.setText(percent.getPercentation());
             }
         });
     }
+
+
 
 }

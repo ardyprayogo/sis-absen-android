@@ -29,5 +29,6 @@ public class Route {
     public static final String URL_REPORT_ATTENDANCE = "attendance/report";
     public static final String URL_CHECK_IN = "attendance/check-in";
     public static final String URL_CHECK_OUT = "attendance/check-out";
+    public static final String URL_PERCENT = "attendance/percent";
 
 }

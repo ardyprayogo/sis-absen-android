@@ -15,8 +15,8 @@
 
     <dimen name="icon_sm">20dp</dimen>
     <dimen name="icon_md">40dp</dimen>
-    <dimen name="icon_lg">60dp</dimen>
-    <dimen name="icon_xlg">80dp</dimen>
+    <dimen name="icon_lg">68dp</dimen>
+    <dimen name="icon_xlg">84dp</dimen>
 
     <dimen name="text_sm">14dp</dimen>
     <dimen name="text_md">16dp</dimen>
