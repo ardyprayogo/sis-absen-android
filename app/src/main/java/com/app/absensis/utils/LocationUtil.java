@@ -13,29 +13,36 @@ import com.google.android.gms.location.LocationServices;
 
 public class LocationUtil {
 
+    private static LocationUtil mLocationUtil;
     protected LocationRequest mLocationRequest;
     private double longitude, latitude;
     private Context context;
-    private LocationUtilInterface mInterface;
     private FusedLocationProviderClient providerClient;
 
     private LocationCallback mLocationCallback = new LocationCallback() {
         @Override
         public void onLocationResult(LocationResult locationResult) {
-//            Log.e("LocationUtil", "lat : " + locationUtil.getLatitude());
-//            Log.e("LocationUtil", "lng : " + locationUtil.getLongitude());
             onLocationChanged(locationResult.getLastLocation());
         }
     };
 
     private static final long MIN_TIME_BW_UPDATES = 1000 * 5;
 
-    public LocationUtil(Context context, LocationUtilInterface locationInterface) {
-        this.context = context;
-        this.mInterface = locationInterface;
+    public static LocationUtil getInstance(Context context) {
+        if (mLocationUtil == null) {
+            mLocationUtil = new LocationUtil(context);
+
+        }
+
+        return mLocationUtil;
     }
 
-    public void requestLocation() {
+    public LocationUtil(Context context) {
+        this.context = context;
+        requestLocation();
+    }
+
+    private void requestLocation() {
         try {
             mLocationRequest = LocationRequest.create()
                     .setFastestInterval(MIN_TIME_BW_UPDATES)
@@ -66,7 +73,6 @@ public class LocationUtil {
     }
 
     private void onLocationChanged(Location location) {
-        mInterface.onLocationChanged(location);
         setLatitude(location.getLatitude());
         setLongitude(location.getLongitude());
     }
@@ -74,9 +80,5 @@ public class LocationUtil {
     public void removeLocation() {
         if (providerClient != null)
             providerClient.removeLocationUpdates(mLocationCallback);
-    }
-
-    public interface LocationUtilInterface {
-        void onLocationChanged(Location location);
     }
 }

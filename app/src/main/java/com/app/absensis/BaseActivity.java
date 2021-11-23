@@ -1,19 +1,29 @@
 package com.app.absensis;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.app.absensis.utils.LocationUtil;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class BaseActivity extends AppCompatActivity {
 
     private MaterialAlertDialogBuilder dialogBuilder;
     private AlertDialog progressDialog = null;
+    private LocationUtil locationUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        locationUtil = LocationUtil.getInstance(this);
     }
 
     public void showLoading(String message, boolean cancelable) {
@@ -85,4 +96,40 @@ public class BaseActivity extends AppCompatActivity {
                 .setPositiveButton("Ok", listener)
                 .show();
     }
+
+    public double getLat() {
+        return locationUtil.getLatitude();
+    }
+
+    public double getLng() {
+        return locationUtil.getLongitude();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!isGpsActive()) {
+            showDialogConfirm("GPS",
+                    "GPS Harus Diaktifkan",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    });
+        }
+    }
+
+    private boolean isGpsActive() {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean retval = false;
+
+        try {
+            retval = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return retval;
+    }
+
 }
