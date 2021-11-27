@@ -12,9 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
     </style>
 
     <style name="Theme.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
+    </style>
+
+    <style name="ThemeOverlay.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 </resources>

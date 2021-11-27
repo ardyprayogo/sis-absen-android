@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,6 +12,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.app.absensis.BaseActivity;
 import com.app.absensis.R;
+import com.app.absensis.network.VolleyResponseListener;
+import com.app.absensis.network.VolleyUtil;
 import com.app.absensis.ui.attendance.cico.CicoActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,17 +25,41 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONObject;
+
 public class AttendanceActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Circle mCircle;
-    private final LatLng office = new LatLng(-6.2506412, 106.6932953);
+    private LatLng office;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
-        initUI();
+        getLonglat();
+    }
+
+    private void getLonglat() {
+        VolleyUtil.getLonglat(this, new VolleyResponseListener() {
+            @Override
+            public void onError(String error) {
+                showSimpleDialog("Error", error);
+            }
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject data = response.getJSONObject("data");
+                    double longitude = data.getDouble("longitude");
+                    double latitude = data.getDouble("latitude");
+                    office = new LatLng(latitude, longitude);
+                    initUI();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void initUI() {

@@ -16,6 +16,8 @@
         android:theme="@style/Theme.Absensis"
         android:usesCleartextTraffic="true">
         <activity
+            android:label="History"
+            android:screenOrientation="portrait"
             android:name=".ui.history.HistoryActivity"
             android:exported="true" />
         <activity
@@ -30,34 +32,42 @@
             </intent-filter>
         </activity>
         <activity
+            android:label="Karyawan"
             android:name=".ui.employee.CreateEmployeeActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Karyawan"
             android:name=".ui.employee.EmployeeActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Jabatan"
             android:name=".ui.level.LevelActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Jabatan"
             android:name=".ui.level.CreateLevelActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Divisi"
             android:name=".ui.division.CreateDivisionActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Divisi"
             android:name=".ui.division.DivisionActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Absen"
             android:name=".ui.attendance.cico.CicoActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:label="Absen"
             android:name=".ui.attendance.AttendanceActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
@@ -67,6 +77,7 @@
             android:value="AIzaSyA4yIMk_FUDvf-fOEizIozV50tNza8By5I" />
 
         <activity
+            android:label="Login"
             android:name=".ui.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

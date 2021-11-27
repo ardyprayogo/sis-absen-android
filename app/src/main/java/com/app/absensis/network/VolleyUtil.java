@@ -113,6 +113,10 @@ public class VolleyUtil {
         sendGetRequest(context, Route.URL_LEVEL_LIST, param, listener);
     }
 
+    public static void getLonglat(Context context, VolleyResponseListener listener) {
+        sendGetRequest(context, Route.URL_LONG_LAT, null, listener);
+    }
+
     public static void createLevel(Context context, String levelName, VolleyResponseListener listener) {
         try {
             JSONObject object = new JSONObject();

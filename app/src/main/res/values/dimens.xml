@@ -22,4 +22,6 @@
     <dimen name="text_md">16dp</dimen>
     <dimen name="text_lg">20dp</dimen>
     <dimen name="text_xlg">24dp</dimen>
+    <dimen name="text_xxlg">46dp</dimen>
+    <dimen name="text_xxxlg">72dp</dimen>
 </resources>

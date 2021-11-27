@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/flat_bg"
     tools:context=".ui.LoginActivity">
 
+    <ImageView
+        android:layout_marginStart="@dimen/padding_margin_xlg"
+        android:src="@drawable/app_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_xlg"
+        android:layout_marginBottom="@dimen/padding_margin_xxlg"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_xlg"
+        app:layout_constraintBottom_toTopOf="@id/ll_login"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
+        android:id="@+id/ll_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/padding_margin_xlg"
+        android:background="@drawable/card_square"
         android:orientation="vertical"
-        android:padding="@dimen/padding_margin_xlg">
+        android:padding="@dimen/padding_margin_xlg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email"
@@ -50,4 +76,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
